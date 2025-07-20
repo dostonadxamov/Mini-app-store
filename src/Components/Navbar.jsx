@@ -2,7 +2,7 @@
 import { CiShoppingCart } from "react-icons/ci";
 import { FaTrashCan } from "react-icons/fa6";
 import {
-    
+    Sheet,
     SheetClose,
     SheetContent,
     SheetFooter,
