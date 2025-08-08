@@ -2,9 +2,10 @@ import { useReducer, createContext, useEffect } from "react";
 
 export const GlobalContext = createContext()
 
+// Boshlang'ich holatni localStorage dan olish
 const initialState = () => {
     const l = localStorage.getItem('cart')
-    return l !== undefined
+    return l
         ? JSON.parse(l)
         : {
             cart: [],
@@ -12,35 +13,37 @@ const initialState = () => {
             totalAmount: 0
         }
 }
+
 function reducer(state, action) {
     const { type, payload } = action
     switch (type) {
         case "ADD":
             return { ...state, cart: [...state.cart, payload] };
+
         case "DEL":
             return {
                 ...state,
-                cart: state.cart.filter((item) => item.id != payload),
+                cart: state.cart.filter((item) => item.id !== payload),
             };
+
         case "INC":
             return {
-                ...state, cart: state.cart.map((el) => {
-                    if (el.id == payload) {
-                        return { ...el, amount: el.amount + 1 }
-                    } else {
-                        return el
-                    }
-                })
+                ...state,
+                cart: state.cart.map((el) =>
+                    el.id === payload
+                        ? { ...el, amount: el.amount + 1 }
+                        : el
+                )
             }
+
         case "DEC":
             return {
-                ...state, cart: state.cart.map((el) => {
-                    if (el.id == payload) {
-                        return { ...el, amount: el.amount - 1 }
-                    } else {
-                        return el
-                    }
-                })
+                ...state,
+                cart: state.cart.map((el) =>
+                    el.id === payload
+                        ? { ...el, amount: el.amount - 1 }
+                        : el
+                )
             }
 
         case "CALCULATE":
@@ -52,29 +55,33 @@ function reducer(state, action) {
                 return a
             }, { totalPrice: 0, totalAmount: 0 })
             return { ...state, totalAmount, totalPrice }
+
         case "CLEAR":
             return {
                 cart: [],
                 totalPrice: 0,
                 totalAmount: 0
             }
+
         default:
             return state
     }
-
 }
 
 export const GlobalContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState())
+
     useEffect(() => {
         dispatch({ type: "CALCULATE" })
         localStorage.setItem("cart", JSON.stringify(state))
     }, [state.cart])
-    return <GlobalContext.Provider value={{
-        ...state,
-        dispatch
 
-    }}>
-        {children}
-    </GlobalContext.Provider>
+    return (
+        <GlobalContext.Provider value={{
+            ...state,
+            dispatch
+        }}>
+            {children}
+        </GlobalContext.Provider>
+    )
 }
