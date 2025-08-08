@@ -1,7 +1,7 @@
 
 export default function Footer() {
     return (
-        <footer data-aos="zoom-out-left"className="bg-gray-900 text-white py-10 mt-10">
+        <footer className="bg-gray-900 text-white py-10 mt-10">
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
                     <h1 className="text-2xl font-bold">Mini Store App</h1>
