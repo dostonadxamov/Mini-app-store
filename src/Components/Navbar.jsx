@@ -22,9 +22,7 @@ export default function Navbar({ changeLang }) {
 
 
     return (
-        <nav data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1500" className=" h-[80px] gap-[15px] sticky top-0 z-10  sm:h-[80px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-between px-[50px]  ">
+        <nav  className=" h-[80px] gap-[15px] sticky top-0 z-10  sm:h-[80px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-between px-[50px]  ">
             <h1 className="text-[#E5E7EB] hover:text-[#6366F1] ease-out duration-300 font-[500] text-2xl">{t('MiniStoreApp')}</h1>
             <div className="flex gap-[15px]">
                 <div className="bg-white w-[100px]  items-center flex h-[30px] px-[4px] rounded-[10px]">
