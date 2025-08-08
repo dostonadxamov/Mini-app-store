@@ -15,9 +15,7 @@ export default function Product({ el }) {
     const { t } = useTranslation();
 
     return (
-        <div data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1500" className="max-w-xs  m-auto flex bg-gray-200 flex-col pb-[20px] px-[10px] rounded-lg border-none inset-shadow-sm hover:inset-shadow-indigo-500 transition-shadow duration-700  ">
+        <div className="max-w-xs  m-auto flex bg-gray-200 flex-col pb-[20px] px-[10px] rounded-lg border-none inset-shadow-sm hover:inset-shadow-indigo-500 transition-shadow duration-700  ">
             <div className=" pt-[70px]" />
             <div className="text-5xl relative text-center">{el.name}  <Badge className="text-white absolute left-0 top-[-50px]  bg-red-500">
                 -25%
