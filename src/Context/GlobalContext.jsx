@@ -2,7 +2,7 @@ import { useReducer, createContext, useEffect } from "react";
 
 export const GlobalContext = createContext()
 
-// Boshlang'ich holatni localStorage dan olish
+
 const initialState = () => {
     const l = localStorage.getItem('cart')
     return l
